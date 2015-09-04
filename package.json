@@ -1,6 +1,6 @@
 {
   "name": "language-magik",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Syntax support for SmallWorld Magik language",
   "keywords": [
     "language",
@@ -13,6 +13,5 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
