@@ -1,0 +1,171 @@
+fileTypes: [
+  "magik"
+]
+name: "Magik"
+foldingStartMarker: "(_for|_if|_method)"
+foldingStopMarker: "(_endloop|_endif|_endmethod)"
+patterns: [
+  {
+    include: "#methods"
+  }
+  {
+    include: "#packages"
+  }
+  {
+    include: "#strings"
+  }
+  {
+    include: "#comments"
+  }
+  {
+    include: "#numbers"
+  }
+  {
+    include: "#symbols"
+  }
+  {
+    include: "#keywords"
+  }
+  {
+    include: "#builtins"
+  }
+]
+repository:
+  parameters:
+    patterns: [
+      {
+        match: "\\w+"
+        name: "variable.parameter.magik"
+      }
+    ]
+  methods:
+    patterns: [
+      {
+        begin: "(\\w+)\\s*\\("
+        beginCaptures:
+          1:
+            name: "entity.name.function.magik"
+        end: "\\)"
+        name: "meta.function.identifier.magik"
+        patterns: [
+          {
+            include: "#comments"
+          }
+          {
+            include: "#symbols"
+          }
+          {
+            include: "#strings"
+          }
+          {
+            include: "#numbers"
+          }
+          {
+            include: "#keywords"
+          }
+          {
+            include: "#methods"
+          }
+          {
+            include: "#self"
+          }
+          {
+            include: "#methods"
+          }
+          {
+            include: "#parameters"
+          }
+        ]
+      }
+    ]
+  packages:
+    patterns: [
+      {
+        match: "\\w+:\\w+"
+        name: "storage.modifier.magik"
+      }
+      {
+        match: "(_package)\\s+(\\w+)"
+        captures:
+          1:
+            name: "keyword.other.magik"
+          2:
+            name: "storage.modifier.magik"
+      }
+    ]
+  strings:
+    patterns: [
+      {
+        begin: "\""
+        end: "\""
+        name: "string.quoted.double.magik"
+        patterns: [
+          {
+            match: "\\."
+            name: "constant.character.escape.magik"
+          }
+        ]
+      }
+    ]
+  comments:
+    patterns: [
+      {
+        match: ".*(#.*$)"
+        captures:
+          1:
+            name: "comment.line.hash.magik"
+      }
+    ]
+  numbers:
+    patterns: [
+      {
+        match: "\\b[0-9]+\\b"
+        name: "constant.numeric.magik"
+      }
+    ]
+  symbols:
+    patterns: [
+      {
+        match: "[\\W^#]*(:[a-zA-Z]+([0-9]|_|-|[a-zA-Z])*)"
+        captures:
+          1:
+            name: "constant.other.symbol.magik"
+      }
+    ]
+  keywords:
+    patterns: [
+      {
+        match: "\\b(_if|_else|_elif|_endif|_loop|_endloop|_for|_over|_leave|_return|_then)\\b"
+        name: "keyword.control.magik"
+      }
+      {
+        match: "\\b(_private|_optional|_method|_endmethod|_proc|_endproc|_is|_local)\\b"
+        name: "keyword.other.magik"
+      }
+      {
+        match: "[<<|>>|-|\\+|\\*|/|=|<>|~]{1}"
+        name: "keyword.operator.magik"
+      }
+      {
+        match: "\\b(_true|_false|_unset|_maybe)\\b"
+        name: "constant.language.magik"
+      }
+    ]
+  builtins:
+    patterns: [
+      {
+        match: "\\b(def_slotted_exemplar|def_package|define_shared_constant)\\b"
+        name: "support.function.magik"
+      }
+      {
+        include: "#self"
+      }
+    ]
+  self:
+    patterns: [
+      {
+        match: "\\b(_self)\\b"
+        name: "variable.language.magik"
+      }
+    ]
+scopeName: "source.magik"

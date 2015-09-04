@@ -1,0 +1,5 @@
+'.source.magik':
+  'editor':
+    'commentStart': '# '
+    'increaseIndentPattern': '(_method|_proc|_then|_loop|_else|_elif)'
+    'decreaseIndentPattern': '(_endmethod|_endproc|_endif|_endloop)'
