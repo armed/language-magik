@@ -1,5 +1,28 @@
 '.source.magik':
-  'editor':
-    'commentStart': '# '
-    'increaseIndentPattern': '(_method|_proc|_then|_loop|_else|_elif)'
-    'decreaseIndentPattern': '(_endmethod|_endproc|_endif|_endloop)'
+  editor:
+    tabLength: 4
+    commentStart: '# '
+    foldEndPattern: '(?x)
+        ^\\s*_endmethod
+      | ^\\s*_endproc
+    '
+    increaseIndentPattern: '(?x)
+        ^[\\w\\s]*_method((?!_endmethod).)*$
+      | ^[\\w\\s]*_proc((?!_endproc).)*$
+      | ^[\\w\\s]*_loop((?!_endloop).)*$
+      | ^[\\w\\s]*_then((?!_endif).)*$
+      | ^[\\w\\s]*_else((?!_endif).)*$
+      | \\{ [^}"\']* $
+      | \\[ [^\\]"\']* $
+      | \\( [^)"\']* $
+    '
+    decreaseIndentPattern: '(?x)
+        ^[\\w\\s]*((?!_method).)*_endmethod$
+      | ^[\\w\\s]*((?!_proc).)*_endproc$
+      | ^[\\w\\s]*((?!_lopp).)*_endloop$
+      | ^[\\w\\s]*((?!_if).)*_endif$
+      | ^[\\w\\s]*_else((?!_endif).)*$
+      | ^[\\w\\s]*_elif((?!_endif).)*$
+      | ^ \\s* [}\\])]
+    '
+    unIndentedLinePattern: '^\\s*\\$\\s*$|^\\s*$'
