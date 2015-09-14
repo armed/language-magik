@@ -110,10 +110,9 @@ repository:
   comments:
     patterns: [
       {
-        match: ".*(#.*$)"
-        captures:
-          1:
-            name: "comment.line.hash.magik"
+        begin: "#"
+        end: "\\n"
+        name: "comment.line.hash.magik"
       }
     ]
   numbers:
