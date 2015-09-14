@@ -1,5 +1,6 @@
 '.source.magik':
   editor:
+    tabType: 'hard'
     tabLength: 4
     commentStart: '# '
     foldEndPattern: '(?x)
