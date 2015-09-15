@@ -134,7 +134,7 @@ repository:
   keywords:
     patterns: [
       {
-        match: "\\b(_if|_else|_elif|_endif|_loop|_endloop|_for|_over|_leave|_return|_then)\\b"
+        match: "\\b(_if|_else|_elif|_endif|_loop|_endloop|_for|_over|_leave|_return|_then|_protect|_endprotect)\\b"
         name: "keyword.control.magik"
       }
       {
