@@ -9,25 +9,25 @@ patterns: [
     include: "#methods"
   }
   {
+    include: "#symbols"
+  }
+  {
     include: "#packages"
   }
   {
-    include: "#strings"
-  }
-  {
-    include: "#comments"
-  }
-  {
     include: "#numbers"
-  }
-  {
-    include: "#symbols"
   }
   {
     include: "#keywords"
   }
   {
     include: "#builtins"
+  }
+  {
+    include: "#strings"
+  }
+  {
+    include: "#comments"
   }
 ]
 repository:
@@ -110,9 +110,12 @@ repository:
   comments:
     patterns: [
       {
-        begin: "#"
+        begin: "(#)"
+        beginCaptures:
+          1:
+            name: "punctuation.definition.comment.magik"
         end: "\\n"
-        name: "comment.line.hash.magik"
+        name: "comment.line.number-sign.magik"
       }
     ]
   numbers:
@@ -125,7 +128,7 @@ repository:
   symbols:
     patterns: [
       {
-        match: "[\\W^#]*(:[a-zA-Z]+([0-9]|_|-|[a-zA-Z])*)"
+        match: "(:[a-zA-Z]+([0-9]|_|-|[a-zA-Z])*)"
         captures:
           1:
             name: "constant.other.symbol.magik"
